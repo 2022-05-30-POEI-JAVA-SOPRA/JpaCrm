@@ -4,6 +4,8 @@ import org.example.dao.CustomerDAO;
 import org.example.entity.Customer;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class AppTest 
@@ -34,5 +36,16 @@ public class AppTest
     public void dontFindById() {
         Customer customer = CustomerDAO.findById(5);
         assertNull(customer);
+    }
+
+    @Test
+    public void findAll() {
+
+        CustomerDAO.create(new Customer("Marie"));
+        CustomerDAO.create(new Customer("Michel"));
+        CustomerDAO.create(new Customer("Alex"));
+
+        List<Customer> customers = CustomerDAO.findAll();
+        assertEquals(3, customers.size());
     }
 }

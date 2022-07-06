@@ -25,6 +25,13 @@ public class Customer {
     private String zipCode;
     private int state;
 
+    public Customer(){
+
+    }
+    public Customer(String firstName){
+        this.firstName = firstName;
+    }
+
 
     public Long getId() {
         return id;
