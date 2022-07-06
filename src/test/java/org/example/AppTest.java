@@ -48,4 +48,18 @@ public class AppTest
         List<Customer> customers = CustomerDAO.findAll();
         assertEquals(3, customers.size());
     }
+
+    @Test
+    public void deleteCustomer(){
+        Customer marie = new Customer("Marie");
+        CustomerDAO.create(marie);
+
+        List<Customer> customers = CustomerDAO.findAll();
+        assertEquals(1, customers.size());
+
+        CustomerDAO.delete(marie);
+
+        customers = CustomerDAO.findAll();
+        assertEquals(0, customers.size());
+    }
 }
