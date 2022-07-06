@@ -1,8 +1,15 @@
 package org.example.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "customers")
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String address;
     private String city;
     private String companyName;
