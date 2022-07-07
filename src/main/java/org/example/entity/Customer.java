@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import org.example.util.Gender;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,9 @@ public class Customer {
     @Column(name="zip_code")
     private String zipCode;
     private Integer state;
+    private Gender gender; // 0:MALE / 1:FEMALE / 2:OTHER
+
+
 
     @OneToOne
     @JoinColumn(name="payment_id")
@@ -158,6 +163,14 @@ public class Customer {
 
     public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public void setNotNullData(Customer newCustomerData){
