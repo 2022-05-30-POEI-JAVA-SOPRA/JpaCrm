@@ -125,4 +125,36 @@ public class AppTest
         assertEquals("Belmondo", updatedCustomer.getLastName());
 
     }
+
+    @Test
+    public void selectWhere(){
+        Customer customer1 = new Customer();
+        customer1.setFirstName("Alain");
+        customer1.setLastName("Delon");
+        CustomerDAO.create(customer1);
+
+        Customer customer2 = new Customer();
+        customer2.setFirstName("Alain");
+        customer2.setLastName("Prost");
+        CustomerDAO.create(customer2);
+
+        Customer customer3 = new Customer();
+        customer3.setFirstName("Marie");
+        customer3.setLastName("Dupont");
+        CustomerDAO.create(customer3);
+
+        /*****************/
+
+        List<Customer> alains = CustomerDAO.findByFirstName("Alain");
+
+        /*****************/
+
+        assertEquals(2, alains.size());
+
+        for(Customer c : alains){
+            if(! c.getFirstName().equals("Alain")){
+                assertTrue(false);
+            }
+        }
+    }
 }

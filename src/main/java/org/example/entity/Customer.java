@@ -160,4 +160,21 @@ public class Customer {
             this.setState(newCustomerData.getState());
         }
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", country='" + country + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", state=" + state +
+                '}';
+    }
 }
