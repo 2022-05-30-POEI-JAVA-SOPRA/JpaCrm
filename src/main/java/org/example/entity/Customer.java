@@ -25,6 +25,10 @@ public class Customer {
     private String zipCode;
     private Integer state;
 
+    @OneToOne
+    @JoinColumn(name="payment_id")
+    private Payment payment;
+
     public Customer(){
     }
     public Customer(String firstName){
@@ -117,6 +121,14 @@ public class Customer {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public void setNotNullData(Customer newCustomerData){
