@@ -62,4 +62,20 @@ public class AppTest
         customers = CustomerDAO.findAll();
         assertEquals(0, customers.size());
     }
+
+    @Test
+    public void deleteCustomerById() {
+        Customer marie = new Customer("Marie");
+        CustomerDAO.create(marie);
+        Customer michel = new Customer("Michel");
+        CustomerDAO.create(michel);
+        Customer alex = new Customer("Alex");
+        CustomerDAO.create(alex);
+
+        CustomerDAO.deleteCustomerById(michel.getId());
+
+        assertNull(CustomerDAO.findById(michel.getId()));
+        assertNotNull(CustomerDAO.findById(marie.getId()));
+        assertNotNull(CustomerDAO.findById(alex.getId()));
+    }
 }
