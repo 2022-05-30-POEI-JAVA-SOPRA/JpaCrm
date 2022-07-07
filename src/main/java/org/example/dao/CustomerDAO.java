@@ -48,6 +48,7 @@ public class CustomerDAO {
         delete(customerToDelete);
     }
 
+
 //    public static void deleteCustomerByIdV2(Long id) {
 //        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 //
@@ -62,4 +63,22 @@ public class CustomerDAO {
 //
 //        tx.commit();
 //    }
+
+
+    public static void update(Long id, Customer newCustomerData) {
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
+        Customer customerToUpdate = entityManager.find(Customer.class, id);
+        customerToUpdate.setNotNullData(newCustomerData);
+
+        EntityTransaction tx = null;
+        try {
+            tx = entityManager.getTransaction();
+            tx.begin();
+            entityManager.merge(customerToUpdate);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        }
+    }
 }
