@@ -14,6 +14,8 @@ public class Payment {
     private String confidentialCode;
     private String bank;
 
+//    Customer
+
 
     public Long getId() {
         return id;

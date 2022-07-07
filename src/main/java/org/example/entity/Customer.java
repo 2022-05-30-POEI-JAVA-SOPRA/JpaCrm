@@ -27,7 +27,11 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name="payment_id")
-    private Payment payment;
+    private Payment payment; // numéro de Carte bleu
+
+    @ManyToOne
+    @JoinColumn(name="delivery_address_id")
+    private Address deliveryAddress; // 1 seule adresse par Customer
 
     public Customer(){
     }
@@ -129,6 +133,14 @@ public class Customer {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(Address deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
     }
 
     public void setNotNullData(Customer newCustomerData){
