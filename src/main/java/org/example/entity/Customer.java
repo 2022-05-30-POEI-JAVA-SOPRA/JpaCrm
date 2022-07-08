@@ -30,8 +30,6 @@ public class Customer {
     private Integer state;
     private Gender gender; // 0:MALE / 1:FEMALE / 2:OTHER
 
-
-
     @OneToOne
     @JoinColumn(name="payment_id")
     private Payment payment; // numéro de Carte bleu

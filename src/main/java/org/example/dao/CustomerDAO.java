@@ -23,7 +23,6 @@ public class CustomerDAO {
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         Customer customer = entityManager.find(Customer.class, id);
-
         return customer;
     }
 
@@ -49,20 +48,22 @@ public class CustomerDAO {
     }
 
 
-//    public static void deleteCustomerByIdV2(Long id) {
-//        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
-//
-//        System.out.println("deleteCustomerByIdV2 : "+id);
-//        EntityTransaction tx = entityManager.getTransaction();
-//        tx.begin();
-//
-//        Query deleteQuery = entityManager.createQuery("delete from Customer c where c.id= :id");
-//        deleteQuery.setParameter("id", id);
-//        int result = deleteQuery.executeUpdate();
-//        System.out.println(result);
-//
-//        tx.commit();
-//    }
+    public static void deleteCustomerByIdV2(Long id) {
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
+        System.out.println("deleteCustomerByIdV2 : "+id);
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+
+        Query deleteQuery = entityManager.createQuery("delete from Customer c where c.id= :id");
+        deleteQuery.setParameter("id", id);
+        System.out.println(id);
+        int result = deleteQuery.executeUpdate();
+        entityManager.clear();// <------------
+        System.out.println(result);
+
+        tx.commit();
+    }
 
 
     public static void update(Long id, Customer newCustomerData) {
